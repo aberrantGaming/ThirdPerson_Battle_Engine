@@ -25,4 +25,13 @@ public class Surgebinding : IInvestiture {
     {
         Debug.Log("Initialized Surgebinder.");
     }
+
+    public void GatherEnergy()
+    {
+        Debug.Log("Gathering Energy");
+
+        // Locate nearby energy sources
+
+        // Absorb the energy as a mana resource
+    }
 }

@@ -15,5 +15,6 @@ public interface IInvestiture
     int Health { get; }
     int Energy { get; }
 
-    void Init();    
+    void Init();
+    void GatherEnergy();
 }
