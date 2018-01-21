@@ -9,6 +9,7 @@ namespace EntityInterface
     public struct EntityStats
     {
         #region Variables
+
         public Attribute Body;
         public Attribute Mind;
         public Attribute Soul;
@@ -26,6 +27,7 @@ namespace EntityInterface
         {
             get { return Energy.CalculateValue(); }
         }
+
     #endregion
 
         public EntityStats(int baseBody, int baseMind, int baseSoul)
@@ -76,7 +78,7 @@ namespace EntityInterface
         protected EntityStats myStats = new EntityStats();
 
         public abstract void Init();
-        //protected abstract void InstantiateAttributes();
+
         protected abstract void TakeDamage(int damageTaken);
         protected abstract void EntityDeath();
     }

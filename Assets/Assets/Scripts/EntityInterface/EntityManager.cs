@@ -6,12 +6,11 @@ namespace EntityInterface
     public class EntityManager : Entity
     {
         #region Variables
-        public GameObject EntitySelf;
-    #endregion
+        #endregion
 
         public override void Init()
         {
-            myStats = new EntityStats(1,1,1);
+            myStats = new EntityStats(1, 1, 1);
         }
 
         protected override void TakeDamage(int damageTaken)

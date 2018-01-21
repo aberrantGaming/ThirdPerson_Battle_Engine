@@ -7,15 +7,11 @@ namespace EntityInterface
     {
         #region Variables
         public float lookRadius = 10f;
-        public int BodyBaseValue = 3, MindBaseValue = 3, SoulBaseValue = 3;
+        public int BodyBaseValue = 1, MindBaseValue = 1, SoulBaseValue = 1;
 
         Transform target;
         NavMeshAgent agent;
         #endregion
-
-        void Start()
-        {
-        }
 
         void Update()
         {
@@ -35,15 +31,11 @@ namespace EntityInterface
 
         public override void Init()
         {
-            InstantiateAttributes();
+            // Instantiate Attributes
+            myStats = new EntityStats(BodyBaseValue, MindBaseValue, SoulBaseValue);
 
             agent = GetComponent<NavMeshAgent>();
             target = PlayerManager.instance.EntitySelf.transform;
-        }
-
-        protected void InstantiateAttributes()
-        {
-            myStats = new EntityStats(BodyBaseValue, MindBaseValue, SoulBaseValue);
         }
 
         protected override void EntityDeath()

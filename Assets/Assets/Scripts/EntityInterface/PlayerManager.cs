@@ -19,50 +19,60 @@ namespace EntityInterface
         #endregion
 
         #region Variables
-        public int BodyBaseValue = 3;
-        public int MindBaseValue = 3;
-        public int SoulBaseValue = 3;
-
-        public Surgebinder PlayerClass;
-
-        protected Ability[] currentAbilities;
-
-
+        // Set this to provide specific data about the entity's discipline
+        public IInvestiture Investiture = new Surgebinding();
+        
         private Ability ActiveAbility = null;
+        #region Hidden Variables
+        [HideInInspector]
+        public GameObject EntitySelf { get { return gameObject; } }
         #endregion
 
-        public override void Init()
+        #endregion
+
+        private void Start()
         {
             EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
+        }
+        
+        /// <summary>
+        /// This method is called from the ThirdPersonInput component
+        /// </summary>
+        public override void Init()
+        {
+            // Run base entity initialization
+            base.Init();
+            
+            if (Investiture != null)
+                Investiture.Init();                
 
-            AbilityInit();
             AttributeInit();
+
+            //AbilityInit();
         }
 
         protected void AbilityInit()
         {
-            currentAbilities = new Ability[4];
-            currentAbilities[0] = PlayerClass.Passive1;
-            currentAbilities[1] = PlayerClass.Ability1;
-            currentAbilities[2] = PlayerClass.Ability2;
-            currentAbilities[3] = PlayerClass.Ability3;
+            //currentAbilities = new Ability[4];
+            //currentAbilities[0] = PlayerClass.Passive1;
+            //currentAbilities[1] = PlayerClass.Ability1;
+            //currentAbilities[2] = PlayerClass.Ability2;
+            //currentAbilities[3] = PlayerClass.Ability3;
         }
         
         protected void AttributeInit()
         {
-            myStats = new EntityStats(BodyBaseValue, MindBaseValue, SoulBaseValue);
-
             // Apply raw bonuses from the attached player class
-            myStats.Body.AddRawBonus(new RawBonus(PlayerClass.BodyBonus));
-            myStats.Mind.AddRawBonus(new RawBonus(PlayerClass.MindBonus));
-            myStats.Soul.AddRawBonus(new RawBonus(PlayerClass.SoulBonus));
-            myStats.Health.AddRawBonus(new RawBonus(PlayerClass.HealthBonus));
-            myStats.Energy.AddRawBonus(new RawBonus(PlayerClass.EnergyBonus));
-            myStats.ACV.AddRawBonus(new RawBonus(PlayerClass.AcvBonus));
-            myStats.DCV.AddRawBonus(new RawBonus(PlayerClass.DcvBonus));
+            myStats.Body.AddRawBonus(new RawBonus(Investiture.Body));
+            myStats.Mind.AddRawBonus(new RawBonus(Investiture.Mind));
+            myStats.Soul.AddRawBonus(new RawBonus(Investiture.Soul));
+            
+            myStats.Health.AddRawBonus(new RawBonus(Investiture.Health));
+            myStats.Energy.AddRawBonus(new RawBonus(Investiture.Energy));
+
             myStats.CalculateAll();
 
-            // Heal the player up to their new max health and energy
+            //// Heal the player up to their new max health and energy
             myStats.CurrentHealth = myStats.MaxHealth;
             myStats.CurrentEnergy = myStats.MaxEnergy;
         }
@@ -80,7 +90,7 @@ namespace EntityInterface
 
         public virtual void SetAbility(int index)
         {
-            ActiveAbility = currentAbilities[index];
+            //ActiveAbility = currentAbilities[index];
         }
 
         private void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
