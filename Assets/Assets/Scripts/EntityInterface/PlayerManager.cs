@@ -20,9 +20,10 @@ namespace EntityInterface
 
         #region Variables
         // Set this to provide specific data about the entity's discipline
-        public IInvestiture Investiture = new Surgebinding();
+        public IInvestiture Investiture = new Windrunner();
         
         private Ability ActiveAbility = null;
+
         #region Hidden Variables
         [HideInInspector]
         public GameObject EntitySelf { get { return gameObject; } }
@@ -44,7 +45,9 @@ namespace EntityInterface
             base.Init();
             
             if (Investiture != null)
-                Investiture.Init();                
+                Investiture.Init();
+
+            Debug.Log("Discipline: " + Investiture.DisciplineName + "; Order: " + Investiture.OrderName);
 
             AttributeInit();
 
@@ -63,12 +66,11 @@ namespace EntityInterface
         protected void AttributeInit()
         {
             // Apply raw bonuses from the attached player class
-            myStats.Body.AddRawBonus(new RawBonus(Investiture.Body));
-            myStats.Mind.AddRawBonus(new RawBonus(Investiture.Mind));
-            myStats.Soul.AddRawBonus(new RawBonus(Investiture.Soul));
-            
-            myStats.Health.AddRawBonus(new RawBonus(Investiture.Health));
-            myStats.Energy.AddRawBonus(new RawBonus(Investiture.Energy));
+            myStats.Body.AddRawBonus(Investiture.BonusBody);
+            myStats.Mind.AddRawBonus(Investiture.BonusMind);
+            myStats.Soul.AddRawBonus(Investiture.BonusSoul);            
+            myStats.Health.AddRawBonus(Investiture.BonusHealth);
+            myStats.Energy.AddRawBonus(Investiture.BonusEnergy);
 
             myStats.CalculateAll();
 

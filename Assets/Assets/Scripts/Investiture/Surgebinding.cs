@@ -1,29 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Attributes;
 using Skills;
 
 /// <summary>
 /// Surgebinding is a discipline of Investiture. Surgebinders benefit from default
 ///     passive abilities, but do not have active abilities of their own.
 /// </summary>
-public class Surgebinding : IInvestiture {
+public class Surgebinding : IInvestiture
+{
+    #region Variables
 
-    public string Name { get { return "Surgebinder"; } }
-    public string Desc { get { return "SurgeBinder_Description"; } }
+    #region Interface Members
+    public string DisciplineName { get { return "Surgebinder"; } }
+    public string DisciplineDesc { get { return "SurgeBinder_Description"; } }
+    public string OrderName { get; set; }
 
-    public int Body { get { return 3; } }
-    public int Mind { get { return 3; } }
-    public int Soul { get { return 3; } }
+    public RawBonus BonusBody { get { return new RawBonus(bodyBonus.CalculateValue()); } }
+    public RawBonus BonusMind { get { return new RawBonus(mindBonus.CalculateValue()); } }
+    public RawBonus BonusSoul { get { return new RawBonus(soulBonus.CalculateValue()); } }
+    public RawBonus BonusHealth { get { return new RawBonus(soulBonus.CalculateValue()); } }
+    public RawBonus BonusEnergy { get { return new RawBonus(soulBonus.CalculateValue()); } }
+    #endregion
 
-    public int Health { get { return 10; } }
-    public int Energy { get { return 10; } }
+    #region Base Attribute Bonuses
+    protected Attribute bodyBonus = new Attribute(3);
+    protected Attribute mindBonus = new Attribute(3);
+    protected Attribute soulBonus = new Attribute(3);
+    protected Attribute healthBonus = new Attribute(10);
+    protected Attribute energyBonus = new Attribute(10);
+    #endregion
 
     protected Ability[] availableAbilities;
 
-    public void Init()
+    #endregion
+
+    public virtual void Init()
     {
-        Debug.Log("Initialized Surgebinder.");
+        
     }
 
     public void GatherEnergy()
@@ -33,5 +48,10 @@ public class Surgebinding : IInvestiture {
         // Locate nearby energy sources
 
         // Absorb the energy as a mana resource
+    }
+
+    protected void SetOrder(string _orderName)
+    {
+        OrderName = _orderName;
     }
 }

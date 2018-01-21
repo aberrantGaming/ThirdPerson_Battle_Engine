@@ -1,19 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Attributes;
+
 
 /// <summary>
 /// Investiture is like a framework for using "magic"
 /// </summary>
 public interface IInvestiture
 {
-    string Name { get; }
-    string Desc { get; }
-    int Body { get; }
-    int Mind { get; }
-    int Soul { get; }
-    int Health { get; }
-    int Energy { get; }
+    string DisciplineName { get; }
+    string DisciplineDesc { get; }
+    string OrderName { get; }
+
+    RawBonus BonusBody { get; }
+    RawBonus BonusMind { get; }
+    RawBonus BonusSoul { get; }
+    RawBonus BonusHealth { get; }
+    RawBonus BonusEnergy { get; }
 
     void Init();
     void GatherEnergy();
