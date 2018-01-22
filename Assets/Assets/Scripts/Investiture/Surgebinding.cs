@@ -4,6 +4,20 @@ using UnityEngine;
 using Attributes;
 using Skills;
 
+public enum SurgebindingOrder
+{
+    Windrunners,
+    Skybreakers,
+    Dustbringers,
+    Edgedancers,
+    Truthwatchers,
+    Lightweavers,
+    Elsecallers,
+    Willshapers,
+    Stonewards,
+    Bondsmiths
+}
+
 /// <summary>
 /// Surgebinding is a discipline of Investiture. Surgebinders benefit from default
 ///     passive abilities, but do not have active abilities of their own.
@@ -25,9 +39,9 @@ public class Surgebinding : IInvestiture
     #endregion
 
     #region Base Attribute Bonuses
-    protected Attribute bodyBonus = new Attribute(3);
-    protected Attribute mindBonus = new Attribute(3);
-    protected Attribute soulBonus = new Attribute(3);
+    protected Attribute bodyBonus = new Attribute(2);
+    protected Attribute mindBonus = new Attribute(2);
+    protected Attribute soulBonus = new Attribute(2);
     protected Attribute healthBonus = new Attribute(10);
     protected Attribute energyBonus = new Attribute(10);
     #endregion
@@ -48,10 +62,5 @@ public class Surgebinding : IInvestiture
         // Locate nearby energy sources
 
         // Absorb the energy as a mana resource
-    }
-
-    protected void SetOrder(string _orderName)
-    {
-        OrderName = _orderName;
     }
 }

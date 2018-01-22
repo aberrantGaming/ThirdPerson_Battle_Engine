@@ -5,24 +5,17 @@ using Attributes;
 
 public class Windrunner : Surgebinding
 {
-    private string orderName = "Windrunners";
-
-    private RawBonus bodyBonusValue = new RawBonus(1);
-    private RawBonus mindBonusValue = new RawBonus(1);
-    private RawBonus soulBonusValue = new RawBonus(1);
-    private RawBonus energyBonusValue = new RawBonus(10);
-    private RawBonus healthBonusValue = new RawBonus(10);
+    public new string OrderName = "Windrunners";
 
     public override void Init()
-    {
-        OrderName = orderName;
+    {   
+        // Apply new bonuses for this job
+        bodyBonus = new Attribute(1);
+        mindBonus = new Attribute(0);
+        soulBonus = new Attribute(0);
+        healthBonus = new Attribute(10);
+        energyBonus = new Attribute(5);
 
-        bodyBonus.AddRawBonus(bodyBonusValue);
-        mindBonus.AddRawBonus(mindBonusValue);
-        soulBonus.AddRawBonus(soulBonusValue);
-        healthBonus.AddRawBonus(healthBonusValue);
-        energyBonus.AddRawBonus(energyBonusValue);
-        
-        Debug.Log("Initialized " + orderName);
+        Debug.Log("Initialized " + OrderName);
     }
 }
