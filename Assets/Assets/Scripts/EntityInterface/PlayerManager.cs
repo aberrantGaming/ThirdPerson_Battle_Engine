@@ -20,7 +20,7 @@ namespace EntityInterface
 
         #region Variables
         // Set this to provide specific data about the entity's discipline
-        public IInvestiture Investiture = new Windrunner();
+        public IInvestiture Investiture = new Surgebinding();
         
         private Ability ActiveAbility = null;
 
@@ -41,42 +41,24 @@ namespace EntityInterface
         /// </summary>
         public override void Init()
         {
-            // Run base entity initialization
-            base.Init();
-            
+            myStats = new EntityStats(3, 3, 3);
+
             if (Investiture != null)
+            {
                 Investiture.Init();
+                ApplyInvestitureBonus();
 
-            Debug.Log("Discipline: " + Investiture.DisciplineName + "; Order: " + Investiture.OrderName);
+                SetOrder(SurgebindingOrder.Windrunners);
+                Debug.Log("Discipline: " + Investiture.DisciplineName + "; Order: " + Investiture.OrderName);
+            }
 
-            AttributeInit();
-
-            //AbilityInit();
+            Health_CurValue = myStats.Health_MaxValue;
+            Energy_CurValue = myStats.Energy_MaxValue;
         }
 
-        protected void AbilityInit()
-        {
-            //currentAbilities = new Ability[4];
-            //currentAbilities[0] = PlayerClass.Passive1;
-            //currentAbilities[1] = PlayerClass.Ability1;
-            //currentAbilities[2] = PlayerClass.Ability2;
-            //currentAbilities[3] = PlayerClass.Ability3;
-        }
-        
         protected void AttributeInit()
         {
-            // Apply raw bonuses from the attached player class
-            myStats.Body.AddRawBonus(Investiture.BonusBody);
-            myStats.Mind.AddRawBonus(Investiture.BonusMind);
-            myStats.Soul.AddRawBonus(Investiture.BonusSoul);            
-            myStats.Health.AddRawBonus(Investiture.BonusHealth);
-            myStats.Energy.AddRawBonus(Investiture.BonusEnergy);
-
-            myStats.CalculateAll();
-
-            //// Heal the player up to their new max health and energy
-            myStats.CurrentHealth = myStats.MaxHealth;
-            myStats.CurrentEnergy = myStats.MaxEnergy;
+            ApplyInvestitureBonus();
         }
 
         public virtual void FireAbility()
@@ -93,6 +75,54 @@ namespace EntityInterface
         public virtual void SetAbility(int index)
         {
             //ActiveAbility = currentAbilities[index];
+        }
+
+        private void ApplyInvestitureBonus()
+        {
+            myStats.Body.AddRawBonus(Investiture.BonusBody);
+            myStats.Mind.AddRawBonus(Investiture.BonusMind);
+            myStats.Soul.AddRawBonus(Investiture.BonusSoul);            
+            myStats.Health.AddRawBonus(Investiture.BonusHealth);
+            myStats.Energy.AddRawBonus(Investiture.BonusEnergy);
+
+            myStats.CalculateAll();
+        }
+
+        private void RemoveInvestitureBonus()
+        {
+            myStats.Body.RemoveRawBonus(Investiture.BonusBody);
+            myStats.Mind.RemoveRawBonus(Investiture.BonusMind);
+            myStats.Soul.RemoveRawBonus(Investiture.BonusSoul);
+            myStats.Health.RemoveRawBonus(Investiture.BonusHealth);
+            myStats.Energy.RemoveRawBonus(Investiture.BonusEnergy);
+
+            myStats.CalculateAll();
+        }
+
+        private void SetOrder(SurgebindingOrder newOrder)
+        {
+            RemoveInvestitureBonus();
+
+            if (newOrder == SurgebindingOrder.Windrunners)
+                Investiture = new Windrunner();
+            //else if (newOrder == SurgebindingOrder.Skybreakers)
+            //    Investiture = new Skybreaker();
+            //else if (newOrder == SurgebindingOrder.Dustbringers)
+            //    Investiture = new Dustbringer();
+            //else if (newOrder == SurgebindingOrder.Edgedancers)
+            //    Investiture = new Edgedancer();
+            //else if (newOrder == SurgebindingOrder.Truthwatchers)
+            //    Investiture = new Truthwatcher();
+            //else if (newOrder == SurgebindingOrder.Elsecallers)
+            //    Investiture = new Willshaper();
+            //else if (newOrder == SurgebindingOrder.Stonewards)
+            //    Investiture = new Stonewards();
+            //else if (newOrder == SurgebindingOrder.Bondsmiths)
+            //    Investiture = new Bondsmith();
+
+            Investiture.Init();
+
+            ApplyInvestitureBonus();
         }
 
         private void OnEquipmentChanged(Equipment newItem, Equipment oldItem)

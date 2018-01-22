@@ -9,24 +9,27 @@ namespace EntityInterface
     public struct EntityStats
     {
         #region Variables
+        
+        #region Public Getters
+        public int Body_Value { get { return Body.CalculateValue(); } }
+        public int Mind_Value { get { return Mind.CalculateValue(); } }
+        public int Soul_Value { get { return Soul.CalculateValue(); } }
+        public int Health_MaxValue { get { return Health.CalculateValue(); } }
+        public int Energy_MaxValue { get { return Energy.CalculateValue(); } }
+        #endregion
 
+        #region Base Attributes
         public Attribute Body;
         public Attribute Mind;
         public Attribute Soul;
+        #endregion
+
+        #region Dependant Attributes
         public HealthPoints Health;
         public EnergyPoints Energy;
         public AttackCombatValue ACV;
         public DefenseCombatValue DCV;
-        public int CurrentHealth, CurrentEnergy;
-
-        public int MaxHealth
-        {
-            get { return Health.CalculateValue(); }
-        }
-        public int MaxEnergy
-        {
-            get { return Energy.CalculateValue(); }
-        }
+        #endregion     
 
     #endregion
 
@@ -54,9 +57,6 @@ namespace EntityInterface
             DCV.AddAttribute(Mind);
             DCV.AddAttribute(Soul);
 
-            CurrentHealth = Health.CalculateValue();
-            CurrentEnergy = Energy.CalculateValue();
-
             CalculateAll();            
         }
 
@@ -76,6 +76,7 @@ namespace EntityInterface
     public abstract class Entity : MonoBehaviour
     {
         protected EntityStats myStats = new EntityStats();
+        protected int Health_CurValue, Energy_CurValue;
 
         public abstract void Init();
 

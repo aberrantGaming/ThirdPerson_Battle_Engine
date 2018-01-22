@@ -11,6 +11,9 @@ namespace EntityInterface
         public override void Init()
         {
             myStats = new EntityStats(1, 1, 1);
+
+            Health_CurValue = myStats.Health_MaxValue;
+            Energy_CurValue = myStats.Energy_MaxValue;
         }
 
         protected override void TakeDamage(int damageTaken)
@@ -18,10 +21,10 @@ namespace EntityInterface
             damageTaken -= myStats.ACV.CalculateValue();
             damageTaken = Mathf.Clamp(damageTaken, 0, int.MaxValue);
 
-            myStats.CurrentHealth -= damageTaken;
+            Health_CurValue -= damageTaken;
             Debug.Log(transform.name + " takes " + damageTaken + " damage.");
 
-            if (myStats.CurrentHealth <= 0)
+            if (Health_CurValue <= 0)
                 EntityDeath();
         }
 
