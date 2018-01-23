@@ -1,7 +1,7 @@
 ﻿using Attributes;
 using Interactables.Items;
 using Managers;
-using Skills;
+using Abilities;
 using UnityEngine;
 
 namespace EntityInterface

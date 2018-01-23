@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Skills
+namespace Abilities
 {
-    [CreateAssetMenu (menuName = "Abilities/RaycastAbility")]
+    [CreateAssetMenu (menuName = "Ability/RaycastAbility")]
     public class RaycastAbility : Ability
     {
         public int baseDamage = 1;
@@ -12,7 +12,7 @@ namespace Skills
         public float hitForce = 100f;
         public Color laserColor = Color.white;
 
-        private Skills.RaycastShootTriggerable rcShoot;
+        private Abilities.RaycastShootTriggerable rcShoot;
 
         public override void Init(GameObject obj)
         {
@@ -32,6 +32,6 @@ namespace Skills
         {
             rcShoot.Fire();
             Debug.Log("Ability Fired: " + name);
-        }        
+        }
     }
 }

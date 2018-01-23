@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Attributes;
-using Skills;
+using Abilities;
 
 public enum KnightsRadiantOrder
 {

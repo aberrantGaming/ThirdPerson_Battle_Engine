@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Skills
+namespace Abilities
 {
     public abstract class Ability : ScriptableObject
     {
