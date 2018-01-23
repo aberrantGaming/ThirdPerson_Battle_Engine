@@ -19,6 +19,9 @@ namespace EntityInterface
 
         #region Variables
         public Surgebinder Investiture;
+
+        protected Ability[] Hotbar = new Ability[3];
+        protected Ability SelectedAbility;
         
         #region Hidden Variables
         [HideInInspector] public GameObject EntitySelf { get { return gameObject; } }
@@ -29,7 +32,6 @@ namespace EntityInterface
         private void Start()
         {
             EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
-
         }
         
         /// <summary>
@@ -38,16 +40,17 @@ namespace EntityInterface
         public override void Init()
         {
             if (Investiture == null)
-                Investiture = Surgebinder.CreateInstance<Surgebinder>();
+                Investiture = ScriptableObject.CreateInstance<Surgebinder>();
 
-            myStats = new EntityStats(3, 3, 3);
+            Stats = new EntityStats(3, 3, 3);
 
             Investiture.Init();
             ApplyInvestitureBonus();
-            Debug.Log("Initializing complete. ChosenOrder: " + Investiture.CharacterOrder);
+            Hotbar[0] = Investiture.CharacterAbilities[0];
+            Debug.Log("Initializing complete. Current Order: " + Investiture.CharacterOrder);
 
-            Health_CurValue = myStats.Health_MaxValue;
-            Energy_CurValue = myStats.Energy_MaxValue;
+            Health_CurValue = Stats.Health_MaxValue;
+            Energy_CurValue = Stats.Energy_MaxValue;
         }
 
         protected void AttributeInit()
@@ -57,62 +60,62 @@ namespace EntityInterface
 
         public virtual void FireAbility()
         {
-            //if (ActiveAbility != null)
-            //    ActiveAbility.TriggerAbility();
+            if (SelectedAbility != null)
+                SelectedAbility.TriggerAbility();
         }
 
         public virtual void CancelAbility()
         {
-            //ActiveAbility = null;
+            SelectedAbility = null;
         }
 
         public virtual void SetAbility(int index)
         {
-            //ActiveAbility = currentAbilities[index];
+            SelectedAbility = Hotbar[index];
         }
 
         private void ApplyInvestitureBonus()
         {
-            myStats.Body.AddRawBonus(Investiture.BonusBody);
-            myStats.Mind.AddRawBonus(Investiture.BonusMind);
-            myStats.Soul.AddRawBonus(Investiture.BonusSoul);            
-            myStats.Health.AddRawBonus(Investiture.BonusHealth);
-            myStats.Energy.AddRawBonus(Investiture.BonusEnergy);
+            Stats.Body.AddRawBonus(Investiture.BonusBody);
+            Stats.Mind.AddRawBonus(Investiture.BonusMind);
+            Stats.Soul.AddRawBonus(Investiture.BonusSoul);            
+            Stats.Health.AddRawBonus(Investiture.BonusHealth);
+            Stats.Energy.AddRawBonus(Investiture.BonusEnergy);
 
-            myStats.CalculateAll();
+            Stats.CalculateAll();
         }
 
         private void RemoveInvestitureBonus()
         {
-            myStats.Body.RemoveRawBonus(Investiture.BonusBody);
-            myStats.Mind.RemoveRawBonus(Investiture.BonusMind);
-            myStats.Soul.RemoveRawBonus(Investiture.BonusSoul);
-            myStats.Health.RemoveRawBonus(Investiture.BonusHealth);
-            myStats.Energy.RemoveRawBonus(Investiture.BonusEnergy);
+            Stats.Body.RemoveRawBonus(Investiture.BonusBody);
+            Stats.Mind.RemoveRawBonus(Investiture.BonusMind);
+            Stats.Soul.RemoveRawBonus(Investiture.BonusSoul);
+            Stats.Health.RemoveRawBonus(Investiture.BonusHealth);
+            Stats.Energy.RemoveRawBonus(Investiture.BonusEnergy);
 
-            myStats.CalculateAll();
+            Stats.CalculateAll();
         }
 
         private void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
         {
             if (newItem != null)
             {
-                myStats.Body.AddRawBonus(newItem.BonusBody);
-                myStats.Mind.AddRawBonus(newItem.BonusMind);
-                myStats.Soul.AddRawBonus(newItem.BonusSoul);
-                myStats.Health.AddRawBonus(newItem.BonusHealth);
-                myStats.Energy.AddRawBonus(newItem.BonusEnergy);
-                myStats.CalculateAll();
+                Stats.Body.AddRawBonus(newItem.BonusBody);
+                Stats.Mind.AddRawBonus(newItem.BonusMind);
+                Stats.Soul.AddRawBonus(newItem.BonusSoul);
+                Stats.Health.AddRawBonus(newItem.BonusHealth);
+                Stats.Energy.AddRawBonus(newItem.BonusEnergy);
+                Stats.CalculateAll();
             }
 
             if (oldItem != null)
             {
-                myStats.Body.RemoveRawBonus(oldItem.BonusBody);
-                myStats.Mind.RemoveRawBonus(oldItem.BonusMind);
-                myStats.Soul.RemoveRawBonus(oldItem.BonusSoul);
-                myStats.Health.RemoveRawBonus(oldItem.BonusHealth);
-                myStats.Energy.RemoveRawBonus(oldItem.BonusEnergy);
-                myStats.CalculateAll();
+                Stats.Body.RemoveRawBonus(oldItem.BonusBody);
+                Stats.Mind.RemoveRawBonus(oldItem.BonusMind);
+                Stats.Soul.RemoveRawBonus(oldItem.BonusSoul);
+                Stats.Health.RemoveRawBonus(oldItem.BonusHealth);
+                Stats.Energy.RemoveRawBonus(oldItem.BonusEnergy);
+                Stats.CalculateAll();
             }
         }
     }

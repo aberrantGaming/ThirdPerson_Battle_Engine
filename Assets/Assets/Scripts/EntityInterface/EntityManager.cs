@@ -10,15 +10,15 @@ namespace EntityInterface
 
         public override void Init()
         {
-            myStats = new EntityStats(1, 1, 1);
+            Stats = new EntityStats(1, 1, 1);
 
-            Health_CurValue = myStats.Health_MaxValue;
-            Energy_CurValue = myStats.Energy_MaxValue;
+            Health_CurValue = Stats.Health_MaxValue;
+            Energy_CurValue = Stats.Energy_MaxValue;
         }
 
-        protected override void TakeDamage(int damageTaken)
+        public override void TakeDamage(int damageTaken)
         {
-            damageTaken -= myStats.ACV.CalculateValue();
+            damageTaken -= Stats.ACV.CalculateValue();
             damageTaken = Mathf.Clamp(damageTaken, 0, int.MaxValue);
 
             Health_CurValue -= damageTaken;

@@ -75,12 +75,12 @@ namespace EntityInterface
 
     public abstract class Entity : MonoBehaviour
     {
-        protected EntityStats myStats = new EntityStats();
+        public EntityStats Stats = new EntityStats();
         protected int Health_CurValue, Energy_CurValue;
 
         public abstract void Init();
 
-        protected abstract void TakeDamage(int damageTaken);
+        public abstract void TakeDamage(int damageTaken);
         protected abstract void EntityDeath();
     }
 }

@@ -32,7 +32,7 @@ namespace EntityInterface
         public override void Init()
         {
             // Instantiate Attributes
-            myStats = new EntityStats(BodyBaseValue, MindBaseValue, SoulBaseValue);
+            Stats = new EntityStats(BodyBaseValue, MindBaseValue, SoulBaseValue);
 
             agent = GetComponent<NavMeshAgent>();
             target = PlayerManager.instance.EntitySelf.transform;
