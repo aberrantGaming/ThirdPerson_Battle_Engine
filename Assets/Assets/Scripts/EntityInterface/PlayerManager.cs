@@ -1,5 +1,4 @@
 ﻿using Attributes;
-using Characters;
 using Interactables.Items;
 using Managers;
 using Skills;
@@ -19,14 +18,10 @@ namespace EntityInterface
         #endregion
 
         #region Variables
-        // Set this to provide specific data about the entity's discipline
-        public IInvestiture Investiture = new Surgebinding();
+        public Surgebinder Investiture;
         
-        private Ability ActiveAbility = null;
-
         #region Hidden Variables
-        [HideInInspector]
-        public GameObject EntitySelf { get { return gameObject; } }
+        [HideInInspector] public GameObject EntitySelf { get { return gameObject; } }
         #endregion
 
         #endregion
@@ -34,6 +29,7 @@ namespace EntityInterface
         private void Start()
         {
             EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
+
         }
         
         /// <summary>
@@ -41,16 +37,14 @@ namespace EntityInterface
         /// </summary>
         public override void Init()
         {
+            if (Investiture == null)
+                Investiture = Surgebinder.CreateInstance<Surgebinder>();
+
             myStats = new EntityStats(3, 3, 3);
 
-            if (Investiture != null)
-            {
-                Investiture.Init();
-                ApplyInvestitureBonus();
-
-                SetOrder(SurgebindingOrder.Windrunners);
-                Debug.Log("Discipline: " + Investiture.DisciplineName + "; Order: " + Investiture.OrderName);
-            }
+            Investiture.Init();
+            ApplyInvestitureBonus();
+            Debug.Log("Initializing complete. ChosenOrder: " + Investiture.CharacterOrder);
 
             Health_CurValue = myStats.Health_MaxValue;
             Energy_CurValue = myStats.Energy_MaxValue;
@@ -63,13 +57,13 @@ namespace EntityInterface
 
         public virtual void FireAbility()
         {
-            if (ActiveAbility != null)
-                ActiveAbility.Fire();
+            //if (ActiveAbility != null)
+            //    ActiveAbility.TriggerAbility();
         }
 
         public virtual void CancelAbility()
         {
-            ActiveAbility = null;
+            //ActiveAbility = null;
         }
 
         public virtual void SetAbility(int index)
@@ -97,32 +91,6 @@ namespace EntityInterface
             myStats.Energy.RemoveRawBonus(Investiture.BonusEnergy);
 
             myStats.CalculateAll();
-        }
-
-        private void SetOrder(SurgebindingOrder newOrder)
-        {
-            RemoveInvestitureBonus();
-
-            if (newOrder == SurgebindingOrder.Windrunners)
-                Investiture = new Windrunner();
-            //else if (newOrder == SurgebindingOrder.Skybreakers)
-            //    Investiture = new Skybreaker();
-            //else if (newOrder == SurgebindingOrder.Dustbringers)
-            //    Investiture = new Dustbringer();
-            //else if (newOrder == SurgebindingOrder.Edgedancers)
-            //    Investiture = new Edgedancer();
-            //else if (newOrder == SurgebindingOrder.Truthwatchers)
-            //    Investiture = new Truthwatcher();
-            //else if (newOrder == SurgebindingOrder.Elsecallers)
-            //    Investiture = new Willshaper();
-            //else if (newOrder == SurgebindingOrder.Stonewards)
-            //    Investiture = new Stonewards();
-            //else if (newOrder == SurgebindingOrder.Bondsmiths)
-            //    Investiture = new Bondsmith();
-
-            Investiture.Init();
-
-            ApplyInvestitureBonus();
         }
 
         private void OnEquipmentChanged(Equipment newItem, Equipment oldItem)

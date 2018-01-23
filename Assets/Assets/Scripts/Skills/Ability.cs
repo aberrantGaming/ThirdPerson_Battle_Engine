@@ -11,7 +11,7 @@ namespace Skills
         //public AudioClip aSound;
         public float aBaseCoolDown = 1f;
 
-        public abstract void Initialize(GameObject obj);
-        public abstract void Fire();
+        public abstract void Init(GameObject obj);
+        public abstract void TriggerAbility();
     }
 }
