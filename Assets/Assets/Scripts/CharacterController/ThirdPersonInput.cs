@@ -204,11 +204,11 @@ namespace CharacterController
                 pm.CancelAbility();
 
             if (Input.GetKeyDown(hotbar1Input))
-                pm.SetAbility(1);
+                pm.SetAbility(0);
             if (Input.GetKeyDown(hotbar2Input))
-                pm.SetAbility(2);
+                pm.SetAbility(1);
             if (Input.GetKeyDown(hotbar3Input))
-                pm.SetAbility(3);
+                pm.SetAbility(2);
         }
 
         #endregion
