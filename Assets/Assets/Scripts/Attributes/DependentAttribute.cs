@@ -39,14 +39,10 @@ namespace Attributes
             return _finalValue;
         }
     }
-
-    [System.Serializable]
+    
     public class AttackCombatValue : DependantAttribute
     {
-        [SerializeField]
-        public AttackCombatValue(int startingValue) : base(startingValue)
-        {
-        }
+        public AttackCombatValue(int startingValue) : base(startingValue) { }
 
         public override int CalculateValue()
         {
@@ -64,14 +60,10 @@ namespace Attributes
             return _finalValue;
         }
     }
-
-    [System.Serializable]
+    
     public class DefenseCombatValue : DependantAttribute
     {
-        [SerializeField]
-        public DefenseCombatValue(int startingValue) : base(startingValue)
-        {
-        }
+        public DefenseCombatValue(int startingValue) : base(startingValue) { }
 
         public override int CalculateValue()
         {
@@ -90,14 +82,10 @@ namespace Attributes
             return _finalValue;
         }
     }
-
-    [System.Serializable]
+    
     public class HealthPoints : DependantAttribute
     {
-        [SerializeField]
-        public HealthPoints(int startingValue) : base(startingValue)
-        {
-        }
+        public HealthPoints(int startingValue) : base(startingValue) { }
 
         public override int CalculateValue()
         {
@@ -116,14 +104,10 @@ namespace Attributes
         }
 
     }
-
-    [System.Serializable]
+    
     public class EnergyPoints : DependantAttribute
     {
-        [SerializeField]
-        public EnergyPoints(int startingValue) : base(startingValue)
-        {
-        }
+        public EnergyPoints(int startingValue) : base(startingValue) { }
 
         public override int CalculateValue()
         {
@@ -142,6 +126,26 @@ namespace Attributes
         }
 
     }
+    
+    public class ShockValue : DependantAttribute
+    {
+        public ShockValue(int startingValue) : base(startingValue) { }
 
+        public override int CalculateValue()
+        {
+            _finalValue = BaseValue;
+
+            // SV = [(Health Points) / 5]
+            int SV = (_otherAttributes[0].CalculateValue() / 5);
+
+            _finalValue += Convert.ToInt32(SV);
+
+            ApplyRawBonuses();
+
+            ApplyFinalBonuses();
+
+            return _finalValue;
+        }
+    }
 
 }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace Attributes
 {
-    [System.Serializable]
     public class Attribute : BaseAttribute
     {
         private List<RawBonus> _rawBonuses = new List<RawBonus>();

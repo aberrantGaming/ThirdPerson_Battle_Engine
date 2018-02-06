@@ -12,13 +12,13 @@ namespace EntityInterface
         {
             Stats = new EntityStats(1, 1, 1);
 
-            Health_CurValue = Stats.Health_MaxValue;
-            Energy_CurValue = Stats.Energy_MaxValue;
+            Health_CurValue = Stats.HealthMax;
+            Energy_CurValue = Stats.EnergyMax;
         }
 
         public override void TakeDamage(int damageTaken)
         {
-            damageTaken -= Stats.ACV.CalculateValue();
+            damageTaken -= Stats.AttackStrength;
             damageTaken = Mathf.Clamp(damageTaken, 0, int.MaxValue);
 
             Health_CurValue -= damageTaken;

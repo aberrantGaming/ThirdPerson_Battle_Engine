@@ -49,8 +49,8 @@ namespace EntityInterface
             Hotbar[0] = Investiture.CharacterAbilities[0];
             Debug.Log("Initializing complete. Current Order: " + Investiture.CharacterOrder);
 
-            Health_CurValue = Stats.Health_MaxValue;
-            Energy_CurValue = Stats.Energy_MaxValue;
+            Health_CurValue = Stats.HealthMax;
+            Energy_CurValue = Stats.EnergyMax;
         }
 
         protected void AttributeInit()
@@ -76,46 +76,32 @@ namespace EntityInterface
 
         private void ApplyInvestitureBonus()
         {
-            Stats.Body.AddRawBonus(Investiture.BonusBody);
-            Stats.Mind.AddRawBonus(Investiture.BonusMind);
-            Stats.Soul.AddRawBonus(Investiture.BonusSoul);            
-            Stats.Health.AddRawBonus(Investiture.BonusHealth);
-            Stats.Energy.AddRawBonus(Investiture.BonusEnergy);
-
-            Stats.CalculateAll();
+            Stats.BaseBody.AddRawBonus(Investiture.BonusBody);
+            Stats.BaseMind.AddRawBonus(Investiture.BonusMind);
+            Stats.BaseSoul.AddRawBonus(Investiture.BonusSoul);
         }
 
         private void RemoveInvestitureBonus()
         {
-            Stats.Body.RemoveRawBonus(Investiture.BonusBody);
-            Stats.Mind.RemoveRawBonus(Investiture.BonusMind);
-            Stats.Soul.RemoveRawBonus(Investiture.BonusSoul);
-            Stats.Health.RemoveRawBonus(Investiture.BonusHealth);
-            Stats.Energy.RemoveRawBonus(Investiture.BonusEnergy);
-
-            Stats.CalculateAll();
+            Stats.BaseBody.RemoveRawBonus(Investiture.BonusBody);
+            Stats.BaseMind.RemoveRawBonus(Investiture.BonusMind);
+            Stats.BaseSoul.RemoveRawBonus(Investiture.BonusSoul);
         }
 
         private void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
         {
             if (newItem != null)
             {
-                Stats.Body.AddRawBonus(newItem.BonusBody);
-                Stats.Mind.AddRawBonus(newItem.BonusMind);
-                Stats.Soul.AddRawBonus(newItem.BonusSoul);
-                Stats.Health.AddRawBonus(newItem.BonusHealth);
-                Stats.Energy.AddRawBonus(newItem.BonusEnergy);
-                Stats.CalculateAll();
+                Stats.BaseBody.AddRawBonus(newItem.BonusBody);
+                Stats.BaseMind.AddRawBonus(newItem.BonusMind);
+                Stats.BaseSoul.AddRawBonus(newItem.BonusSoul);
             }
 
             if (oldItem != null)
             {
-                Stats.Body.RemoveRawBonus(oldItem.BonusBody);
-                Stats.Mind.RemoveRawBonus(oldItem.BonusMind);
-                Stats.Soul.RemoveRawBonus(oldItem.BonusSoul);
-                Stats.Health.RemoveRawBonus(oldItem.BonusHealth);
-                Stats.Energy.RemoveRawBonus(oldItem.BonusEnergy);
-                Stats.CalculateAll();
+                Stats.BaseBody.RemoveRawBonus(oldItem.BonusBody);
+                Stats.BaseMind.RemoveRawBonus(oldItem.BonusMind);
+                Stats.BaseSoul.RemoveRawBonus(oldItem.BonusSoul);
             }
         }
     }
