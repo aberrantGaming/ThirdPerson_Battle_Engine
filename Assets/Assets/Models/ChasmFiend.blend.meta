@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: 9698552721ee55c4cbcee6ec6edb99c6
+timeCreated: 1517951557
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Sculpt_MeshPart0
+    100004: Sculpt_MeshPart1
+    100006: Sculpt_MeshPart10
+    100008: Sculpt_MeshPart11
+    100010: Sculpt_MeshPart12
+    100012: Sculpt_MeshPart13
+    100014: Sculpt_MeshPart14
+    100016: Sculpt_MeshPart15
+    100018: Sculpt_MeshPart16
+    100020: Sculpt_MeshPart17
+    100022: Sculpt_MeshPart18
+    100024: Sculpt_MeshPart19
+    100026: Sculpt_MeshPart2
+    100028: Sculpt_MeshPart20
+    100030: Sculpt_MeshPart21
+    100032: Sculpt_MeshPart22
+    100034: Sculpt_MeshPart23
+    100036: Sculpt_MeshPart24
+    100038: Sculpt_MeshPart25
+    100040: Sculpt_MeshPart26
+    100042: Sculpt_MeshPart27
+    100044: Sculpt_MeshPart3
+    100046: Sculpt_MeshPart4
+    100048: Sculpt_MeshPart5
+    100050: Sculpt_MeshPart6
+    100052: Sculpt_MeshPart7
+    100054: Sculpt_MeshPart8
+    100056: Sculpt_MeshPart9
+    400000: //RootNode
+    400002: Sculpt_MeshPart0
+    400004: Sculpt_MeshPart1
+    400006: Sculpt_MeshPart10
+    400008: Sculpt_MeshPart11
+    400010: Sculpt_MeshPart12
+    400012: Sculpt_MeshPart13
+    400014: Sculpt_MeshPart14
+    400016: Sculpt_MeshPart15
+    400018: Sculpt_MeshPart16
+    400020: Sculpt_MeshPart17
+    400022: Sculpt_MeshPart18
+    400024: Sculpt_MeshPart19
+    400026: Sculpt_MeshPart2
+    400028: Sculpt_MeshPart20
+    400030: Sculpt_MeshPart21
+    400032: Sculpt_MeshPart22
+    400034: Sculpt_MeshPart23
+    400036: Sculpt_MeshPart24
+    400038: Sculpt_MeshPart25
+    400040: Sculpt_MeshPart26
+    400042: Sculpt_MeshPart27
+    400044: Sculpt_MeshPart3
+    400046: Sculpt_MeshPart4
+    400048: Sculpt_MeshPart5
+    400050: Sculpt_MeshPart6
+    400052: Sculpt_MeshPart7
+    400054: Sculpt_MeshPart8
+    400056: Sculpt_MeshPart9
+    2300000: Sculpt_MeshPart0
+    2300002: Sculpt_MeshPart1
+    2300004: Sculpt_MeshPart10
+    2300006: Sculpt_MeshPart11
+    2300008: Sculpt_MeshPart12
+    2300010: Sculpt_MeshPart13
+    2300012: Sculpt_MeshPart14
+    2300014: Sculpt_MeshPart15
+    2300016: Sculpt_MeshPart16
+    2300018: Sculpt_MeshPart17
+    2300020: Sculpt_MeshPart18
+    2300022: Sculpt_MeshPart19
+    2300024: Sculpt_MeshPart2
+    2300026: Sculpt_MeshPart20
+    2300028: Sculpt_MeshPart21
+    2300030: Sculpt_MeshPart22
+    2300032: Sculpt_MeshPart23
+    2300034: Sculpt_MeshPart24
+    2300036: Sculpt_MeshPart25
+    2300038: Sculpt_MeshPart26
+    2300040: Sculpt_MeshPart27
+    2300042: Sculpt_MeshPart3
+    2300044: Sculpt_MeshPart4
+    2300046: Sculpt_MeshPart5
+    2300048: Sculpt_MeshPart6
+    2300050: Sculpt_MeshPart7
+    2300052: Sculpt_MeshPart8
+    2300054: Sculpt_MeshPart9
+    3300000: Sculpt_MeshPart0
+    3300002: Sculpt_MeshPart1
+    3300004: Sculpt_MeshPart10
+    3300006: Sculpt_MeshPart11
+    3300008: Sculpt_MeshPart12
+    3300010: Sculpt_MeshPart13
+    3300012: Sculpt_MeshPart14
+    3300014: Sculpt_MeshPart15
+    3300016: Sculpt_MeshPart16
+    3300018: Sculpt_MeshPart17
+    3300020: Sculpt_MeshPart18
+    3300022: Sculpt_MeshPart19
+    3300024: Sculpt_MeshPart2
+    3300026: Sculpt_MeshPart20
+    3300028: Sculpt_MeshPart21
+    3300030: Sculpt_MeshPart22
+    3300032: Sculpt_MeshPart23
+    3300034: Sculpt_MeshPart24
+    3300036: Sculpt_MeshPart25
+    3300038: Sculpt_MeshPart26
+    3300040: Sculpt_MeshPart27
+    3300042: Sculpt_MeshPart3
+    3300044: Sculpt_MeshPart4
+    3300046: Sculpt_MeshPart5
+    3300048: Sculpt_MeshPart6
+    3300050: Sculpt_MeshPart7
+    3300052: Sculpt_MeshPart8
+    3300054: Sculpt_MeshPart9
+    4300000: Sculpt_MeshPart0
+    4300002: Sculpt_MeshPart1
+    4300004: Sculpt_MeshPart2
+    4300006: Sculpt_MeshPart3
+    4300008: Sculpt_MeshPart4
+    4300010: Sculpt_MeshPart5
+    4300012: Sculpt_MeshPart6
+    4300014: Sculpt_MeshPart7
+    4300016: Sculpt_MeshPart8
+    4300018: Sculpt_MeshPart9
+    4300020: Sculpt_MeshPart10
+    4300022: Sculpt_MeshPart11
+    4300024: Sculpt_MeshPart12
+    4300026: Sculpt_MeshPart13
+    4300028: Sculpt_MeshPart14
+    4300030: Sculpt_MeshPart15
+    4300032: Sculpt_MeshPart16
+    4300034: Sculpt_MeshPart17
+    4300036: Sculpt_MeshPart18
+    4300038: Sculpt_MeshPart19
+    4300040: Sculpt_MeshPart20
+    4300042: Sculpt_MeshPart21
+    4300044: Sculpt_MeshPart22
+    4300046: Sculpt_MeshPart23
+    4300048: Sculpt_MeshPart24
+    4300050: Sculpt_MeshPart25
+    4300052: Sculpt_MeshPart26
+    4300054: Sculpt_MeshPart27
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
